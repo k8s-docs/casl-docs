@@ -1,5 +1,5 @@
 baseURL = "https://wdk-docs.github.io/casl-docs/"
-title = "NestJs 文档"
+title = "Casl 文档"
 publishDir = "docs"
 enableRobotsTXT = true
 
@@ -70,8 +70,8 @@ id = "UA-00000000-0"
 
 [languages]
 [languages.zh-cn]
-title = "NestJS 文档"
-description = "NestJs 文档"
+title = "Casl 文档"
+description = "Casl 文档"
 languageName ="中文"
 # Weight used for sorting.
 weight = 1
