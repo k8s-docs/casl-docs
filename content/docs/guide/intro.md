@@ -11,13 +11,13 @@ meta:
 [![](https://img.shields.io/npm/dm/%40casl%2Fability.svg)](https://www.npmjs.com/package/%40casl%2Fability)
 [![CASL Join the chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/stalniy-casl/casl)
 
-## What is CASL?
+## 什么是 CASL?
 
 CASL (pronounced /ˈkæsəl/, like **castle**) is an isomorphic authorization JavaScript library which restricts what resources a given client is allowed to access. It's designed to be incrementally adoptable and can easily scale between a simple claim based and fully featured subject and attribute based authorization. It makes it easy to manage and share permissions across UI components, API services, and database queries.
 
 > CASL implements [Attribute Based Access Control](https://en.wikipedia.org/wiki/Attribute-based_access_control)
 
-## Getting Started
+## 入门
 
 The easiest way to try out CASL.js is using the [Hello World example][example-hello-casl]. Feel free to open it in another tab and follow along as we go through some basic examples. Alternatively you can create Nodejs project and install `@casl/ability` as a dependency.
 
@@ -26,7 +26,7 @@ The easiest way to try out CASL.js is using the [Hello World example][example-he
 [example-hello-casl]: https://codesandbox.io/s/github/stalniy/casl-examples/tree/master/packages/hello-world
 [guide-install]: ../install
 
-## Basics
+## 基本
 
 CASL operates on the abilities level, that is what a user can actually do in the application. An ability itself depends on the 4 parameters (last 3 are optional):
 
@@ -70,7 +70,7 @@ ability.cannot("delete", "User"); // true
 
 In the example above, the `Ability` instance allows us to check permissions in a pretty readable way. By the way, all these examples demonstrate checking permissions based on a subject type (i.e. an object type or class), but CASL really shines when you need to restrict objects based on their attributes (i.e. properties).
 
-## Conditions
+## 条件
 
 The most common requirement for mid-sized apps is the ability to limit users so that they can perform actions only on their own resources. CASL allows us to do this by passing an object of conditions as the 3rd argument to `can` and `cannot` methods on the definition step.
 
@@ -224,7 +224,7 @@ ability.can("update", foreignArticle, "title"); // false
 
 > For more complex cases, you can use nested fields and wildcards, see [Restricting field access](../restricting-fields) for details
 
-## Checking logic
+## 检查逻辑
 
 Let's consider a simple example where user can publish articles:
 
@@ -262,7 +262,7 @@ It's very useful when you don't have an instance to check but know its type (for
 
 > If you do checks on a subject type, you need to check permissions one more time on the final subject, right before sending request to API or database.
 
-## Inverted rules
+## 反向规则
 
 This guide talk a lot about allowable permissions but nothing about disallowable ones. This is for the reason. The direct logic is much simpler to understand, and we recommend to use it whenever possible.
 
@@ -301,7 +301,7 @@ ability.can("read", { authorId: user.id, private: true }); // true!
 
 Here we got an unexpected result because direct rule is the last one. To fix the result just revert those rules and **always remember to put inverted rules after the direct one!**
 
-### Forbidden reasons
+### 禁止的原因
 
 The good point about inverted rules is that they help to explicitly forbid particular actions. Moreover they allow to add explanation. Let's see how
 
@@ -333,7 +333,7 @@ try {
 
 > To learn more about `ForbiddenError`, see [ForbiddenError API](../../api#forbidden-error)
 
-## Update rules
+## 更新规则
 
 Sometimes, especially in frontend application development, we need to update `Ability` instance's rules (e.g., on login or logout). To do this, we can use `update` method:
 
@@ -371,7 +371,7 @@ const unsubscribe = ability.on("update", ({ rules, target }) => {
 unsubscribe(); // removes subscription
 ```
 
-## What else?
+## 还有什么?
 
 CASL does not have a concept of "a role" and this makes it very powerful! As CASL allows to describe user abilities in your application, you can use it to:
 
@@ -384,6 +384,6 @@ CASL does not have a concept of "a role" and this makes it very powerful! As CAS
 
 > See [Roles with predefined permissions](../../cookbook/roles-with-static-permissions) for details.
 
-## Ready for More?
+## 准备好了?
 
-We’ve briefly introduced all the features of CASL.js core - the rest of this guide will cover them and other advanced features with much finer details, so make sure to read through it all!
+我们已经简要介绍了 CASL.js 核心的所有特性——本指南的其余部分将涵盖它们和其他高级特性，并提供更详细的细节，所以请务必通读全文!
